@@ -19,7 +19,7 @@ def get_args():
     parser.add_argument('--cuda', default=False, help='Use a GPU')
 
     # Add data arguments
-    parser.add_argument('--data', default='data_asg4/prepared_data', help='path to data directory')
+    parser.add_argument('--data', default='data_tiny/prepared_data', help='path to data directory')
     parser.add_argument('--source-lang', default='fr', help='source language')
     parser.add_argument('--target-lang', default='en', help='target language')
     parser.add_argument('--max-tokens', default=None, type=int, help='maximum number of tokens in a batch')
@@ -38,7 +38,7 @@ def get_args():
 
     # Add checkpoint arguments
     parser.add_argument('--log-file', default=None, help='path to save logs')
-    parser.add_argument('--save-dir', default='checkpoints_asg4', help='path to save checkpoints')
+    parser.add_argument('--save-dir', default='checkpoints_tiny', help='path to save checkpoints')
     parser.add_argument('--restore-file', default='checkpoint_last.pt', help='filename to load checkpoint')
     parser.add_argument('--save-interval', type=int, default=1, help='save a checkpoint every N epochs')
     parser.add_argument('--no-save', action='store_true', help='don\'t save models or checkpoints')
@@ -75,7 +75,7 @@ def main(args):
             tgt_file=os.path.join(args.data, '{:s}.{:s}'.format(split, args.target_lang)),
             src_dict=src_dict, tgt_dict=tgt_dict)
 
-    train_dataset = load_data(split='train') if not args.train_on_asg4 else load_data(split='tiny_train')
+    train_dataset = load_data(split='train') if not args.train_on_tiny else load_data(split='tiny_train')
     valid_dataset = load_data(split='valid')
 
     # Build model and optimization criterion
