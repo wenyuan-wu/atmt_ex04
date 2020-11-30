@@ -83,6 +83,13 @@ class BeamSearchNode(object):
 
         self.search = search
 
-    def eval(self):
-        """ Returns score of sequence up to this node """
+    # def eval(self):
+    #     """ Returns score of sequence up to this node """
+    #     return self.logp
+
+    # TODO: implement length normalization
+    def eval(self, alpha):
+        """ Returns score of sequence up to this node with length normalization"""
+        lp = (5 + self.length)**alpha/(5 + 1)**alpha
+        self.logp = self.logp / lp
         return self.logp

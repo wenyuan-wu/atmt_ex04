@@ -29,7 +29,8 @@ def get_args():
 
     # Add beam search arguments
     parser.add_argument('--beam-size', default=5, type=int, help='number of hypotheses expanded in beam search')
-
+    # TODO: implement length normalization
+    parser.add_argument('--alpha', default=0.0, type=float, help='alpha value for length normalization')
     return parser.parse_args()
 
 
@@ -116,7 +117,8 @@ def main(args):
                 node = BeamSearchNode(searches[i], emb, lstm_out, final_hidden, final_cell,
                                       mask, torch.cat((go_slice[i], next_word)), log_p, 1)
                 # __QUESTION 3: Why do we add the node with a negative score?
-                searches[i].add(-node.eval(), node)
+                # TODO: implement length normalization
+                searches[i].add(-node.eval(args.alpha), node)
 
         # Start generating further tokens until max sentence length reached
         for _ in range(args.max_len-1):
@@ -169,14 +171,16 @@ def main(args):
                         node = BeamSearchNode(search, node.emb, node.lstm_out, node.final_hidden,
                                               node.final_cell, node.mask, torch.cat((prev_words[i][0].view([1]),
                                               next_word)), node.logp, node.length)
-                        search.add_final(-node.eval(), node)
+                        # TODO: implement length normalizaiton
+                        search.add_final(-node.eval(args.alpha), node)
 
                     # Add the node to current nodes for next iteration
                     else:
                         node = BeamSearchNode(search, node.emb, node.lstm_out, node.final_hidden,
                                               node.final_cell, node.mask, torch.cat((prev_words[i][0].view([1]),
                                               next_word)), node.logp + log_p, node.length + 1)
-                        search.add(-node.eval(), node)
+                        # TODO: implement length normalization
+                        search.add(-node.eval(args.alpha), node)
 
             # __QUESTION 5: What happens internally when we prune our beams?
             # How do we know we always maintain the best sequences?

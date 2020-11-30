@@ -2,3 +2,4 @@ __pycache__/
 seq2seq/__pycache__/
 seq2seq/data/__pycache__/
 seq2seq/models/__pycache__/
+.idea/
