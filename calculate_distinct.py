@@ -37,22 +37,6 @@ def load_data(infile):
 
 
 def main():
-    # without_sent_list = load_data('output_task_4/model_translations_without.out')
-    # with_sent_list = load_data('output_task_4/model_translations.out')
-    # without_sent_list = [without_sent_list[i:i + 3] for i in range(0, len(without_sent_list), 3)]
-    # with_sent_list = [with_sent_list[i:i + 3] for i in range(0, len(with_sent_list), 3)]
-    # without_score = []
-    # with_score = []
-    # for i, j in zip(without_sent_list, with_sent_list):
-    #     without_score.append(distinct_n_corpus_level(i, 2))
-    #     with_score.append(distinct_n_corpus_level(j, 2))
-    #     # print(i)
-    #     # print(j)
-    # print(without_score[-2:])
-    # print(with_score[-2:])
-    # print(f'Without avg: {sum(without_score)/len(without_score)}')
-    # print(f'With avg: {sum(with_score)/len(with_score)}')
-
     without_sent_list = load_data('output_task_4/model_translations_without.out')
     with_sent_list = load_data('output_task_4/model_translations.out')
     gamma_10_sent_list = load_data('output_task_4/model_translations_gamma_10.out')

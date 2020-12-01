@@ -1,2 +1,0 @@
-BLEU+case.mixed+numrefs.1+smooth.exp+tok.13a+version.1.4.14 = 22.4 54.9/28.1/16.7/9.8 (BP = 1.000 ratio = 1.013 hyp_len = 3944 ref_len = 3892)
-Time taken: 19 seconds
