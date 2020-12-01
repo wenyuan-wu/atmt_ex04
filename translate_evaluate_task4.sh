@@ -8,7 +8,7 @@ do
   SECONDS=0
   echo "Performing translation with length normalization by gamma $i"
   python translate_beam.py --data data_asg4/prepared_data --checkpoint-path checkpoints_asg4/checkpoint_best.pt --output \
-  $dest_dir/model_translation_"$i".txt --cuda True --beam-size 3 --alpha 0.1 --gamma $i
+  $dest_dir/model_translation_"$i".txt --cuda True --beam-size 6 --alpha 0.1 --gamma $i
 
   # restore translation from BPE
   sed -r 's/(@@ )|(@@ ?$)//g' $dest_dir/model_translation_"$i".txt > $dest_dir/model_translation_"$i".out

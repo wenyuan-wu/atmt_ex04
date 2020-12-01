@@ -37,17 +37,12 @@ def load_data(infile):
 
 
 def main():
-    without_sent_list = load_data('output_task_4/model_translations_without.out')
-    with_sent_list = load_data('output_task_4/model_translations.out')
-    gamma_10_sent_list = load_data('output_task_4/model_translations_gamma_10.out')
-    gamma_100_sent_list = load_data('output_task_4/model_translations_gamma_100.out')
-    for i in range(1, 4):
-        print(f'distinct {i}:')
-        print(f'without: {distinct_n_corpus_level(without_sent_list, i)}')
-        print(f'with: {distinct_n_corpus_level(with_sent_list, i)}')
-        print(f'gamma 10: {distinct_n_corpus_level(gamma_10_sent_list, i)}')
-        print(f'gamma 100: {distinct_n_corpus_level(gamma_100_sent_list, i)}')
-        print('='*30)
+    for i in range(12):
+        sent_list = load_data(f'output_task_4/translation_{i}.txt')
+        for j in range(1, 4):
+            print(f'output_task_4/translation_{i}.txt')
+            print(f'distinct-{j} score: {distinct_n_corpus_level(sent_list, j)}')
+            print('='*30)
 
 
 if __name__ == '__main__':
