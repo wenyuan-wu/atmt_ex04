@@ -31,6 +31,8 @@ def get_args():
     parser.add_argument('--beam-size', default=5, type=int, help='number of hypotheses expanded in beam search')
     # TODO: implement length normalization
     parser.add_argument('--alpha', default=0.0, type=float, help='alpha value for length normalization')
+    # TODO： implement diversity of beam search
+    parser.add_argument('--gamma', default=1, type=float, help='gamma value for ranked hypotheses punishment')
     return parser.parse_args()
 
 
